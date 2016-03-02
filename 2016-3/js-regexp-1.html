@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js正则练习1</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var text = "sharlly thinks Curry will beat LBJ to get MVP";
+		var pattern = /sharlly (thinks Curry (will beat LBJ to get MVP)?)?/gi;
+
+		var matches = pattern.exec(text);
+		console.log(matches[0]+"-"+matches[1]+"-"+matches[2]);
+		//()?捕获组
+
+		//字符串的匹配方法 
+
+		//match()
+		var text2 = "sharlly wants to push something";
+		var pattern2 = /.o/g;
+
+		var matches2 = text2.match(pattern2);
+		console.log(matches2[0],matches2[1]);
+
+		//search()
+
+		var text3 = "sharlly wants to push something";
+		var pattern3 = /.o/g;
+		var pos = text3.search(pattern3);
+		console.log(pos);
+		/*
+		while(pos != -1) {
+			console.log(pos);
+			pos = text3.search(pattern3);
+		}
+		*/
+		//以上代码会一直输出，因为search()始终是从字符串开头向后查找模式
+		
+		//replace()
+		var text3 = "sharlly wants to push something";
+		var pattern3 = /.o/g;
+		var nowText = text3.replace(pattern3,"X");
+		console.log(nowText);
+	</script>
+</body>
+</html>
