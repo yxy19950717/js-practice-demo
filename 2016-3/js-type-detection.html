@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js的类型检测</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// js中5种基本类型及1种复杂类型
+		var string1 = "test1",
+			num1 = 100,
+			boolean1 = true,
+			undefined1,
+			null1 = null,
+			obj1 = {};
+
+		// 类型检测函数
+		function checkType(ele) {
+			if(ele === null){
+				return 'null';
+			}
+			if(ele === undefined){
+				return 'undefined';
+			}
+			return Array.prototype.toString.apply(ele).slice(8,-1);
+		}
+
+		console.log(checkType(string1), checkType(num1), checkType(boolean1), checkType(undefined1), checkType(null1), checkType(obj1));
+		// 最后输出结果
+		// String Number Boolean undefined null Object
+	</script>
+</body>
+</html>
