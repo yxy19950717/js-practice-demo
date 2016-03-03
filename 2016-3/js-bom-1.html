@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js中BOM对象的基本使用</title>
+</head>
+<body>
+	<iframe id="iframe1" name="iframe1" frameborder="0" scrolling="0" marginwidth="0" marginheight="0" onLoad="iframeLoad()" src="/" width="100%" height="0">
+	</iframe>
+	<script type="text/javascript">
+	// window对象
+		/* frames -- 利用iframe框架自适应显示页面 */
+		/* 服务器上运行*/
+		/*
+			-- 这里要注意，window.frames[]可以获得一个frame的window对象，我们必须再获得window中的document对象才能继续操作frame中的文档
+			-- 也可以使用 document.frames[](ie,opera)或者frame的DOM节点.contentDocument;
+			-- window.frames写法有多种
+			   1.window.frames[];
+			   2.top.frames[];
+			   3.frames[]
+		*/
+		// function iframeLoad() {
+		// 	var ifm = document.getElementById('iframe1');
+		// 	var ifmProps = window.frames['iframe1'].document;
+		// 	if(ifm != null && ifmProps != null) {
+		// 		// scrollHeight和scrollWidth代表没有滑动条情况下元素的宽高
+		// 		ifm.height = ifmProps.body.scrollHeight;
+		// 		ifm.width = ifmProps.body.scrollWidth;
+		// 	}
+		// }
+
+	// location对象
+		/* 所有属性
+			hash: 返回URL中的hash(#号后跟0或多个字符)，如果URL中不包含散列，则返回空字符串
+			host: 返回服务器名称和端口号
+			hostname: 返回服务器名称
+			href,toString: 返回当前完整URL
+			pathname: URL中的目录
+			port: 端口
+			protocol: 协议
+			search: 查询字符串
+		*/
+
+		
+
+	</script>
+</body>
+</html>

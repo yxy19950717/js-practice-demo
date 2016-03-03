@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js 闭包复习简例</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// closure2 是高级程序设计第7章的实例，若要访问数据，需要访问数组并调用。
+		// closure 是自己写的，原理很简单。
+		// 两个例子都是闭包的简单运用。
+
+		function closure() {
+			var test = [];
+			for(var i=0; i<10; i++) {
+				test[i] = (function(num) {
+					return num;
+				})(i);
+			}
+			console.log(test);
+		}
+
+		function closure2() {
+			var test = [];
+			for(var i=0; i<10; i++) {
+				test[i] = (function(num){
+					return function() {
+						return num;
+					};
+				}(i));
+			}
+			console.log(test[0]());
+		}
+		closure();
+		closure2();
+	</script>
+</body>
+</html>
