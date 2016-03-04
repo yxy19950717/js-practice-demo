@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jsonp跨域请求</title>
+</head>
+<body>
+	<button id="test">jsonp</button>
+	<script type="text/javascript">
+		/*
+		* jsonp只支持get的跨域请求方式，但它是双向的。
+ 		* 1.监听并创建一个script标签
+ 		* 2.因为src不在同源策略中，所以可以发送参数请求另一个域的接口
+ 		* 3.接口中返回查询参数，和data组成的方法。
+ 		* 4.方法在原本的html中有定义，就可以读出数据
+		*/
+		function callback(data) {
+			console.log(data);
+		}
+		var test = document.getElementById('test');
+		test.onclick = function() {
+			var script1 = document.createElement('script');
+			script1.type="text/javascript";
+			script1.src = "http://www.yinxiangyu.com:3030/blog?callback=callback";
+			var body1 = document.getElementsByTagName('body')[0];
+			body1.appendChild(script1);
+		}
+
+		/*
+		 *  后台NodeJs
+		 *	服务推送已关闭
+		 *	req.query才能接收，查询参数
+		 *	req.params接收:,{}
+		 *	req.body接收post的form
+		*/
+	</script>
+</body>
+</html>
