@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js cookie 一般操作</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//tip: cookie 需要在服务器上运行才能有效
+		var CookieUtil = {
+			get: function(name) {
+				var cookieName = encodeURIComponent(name) + "=",
+					cookieStart = document.cookie.indexOf(cookieName),
+					cookieValue = null;
+				if(cookieStart > -1) {
+					var cookieEnd = document.cookie.indexOf(';', cookieStart);
+					// 若是最后一串cookie
+					if(cookieEnd == -1) {
+						cookieEnd = document.cookie.length;
+					}
+					cookieValue = decodeURIComponent(document.cookie.slice(cookieStart + cookieName.length, cookieEnd));
+				}
+				return cookieValue;
+			},
+			set: function(name, value, expires, path, domain, secure) {
+				var cookieText = encodeURIComponent(name) + "=" + encodeURIComponent(value);
+				if(expires instanceof Date) {
+					cookieText += "; expires=" + expires.toGMTString();
+				}
+				if(path) {
+					cookieText += "; path=" + path;
+				}
+				if(domain) {
+					cookieText += "; domain=" + domain;
+				}
+				if(secure) {
+					cookieText += "; secure=" + secure;
+				}
+
+				document.cookie = cookieText;
+			},
+			unset: function(name, path, domain, secure) {
+				this.set(name, "", new Date(0), path, domain, secure);
+			} 
+		}
+
+		CookieUtil.set('name', 'sharlly');
+		CookieUtil.set('age', '20');
+		console.log(CookieUtil.get('name'), CookieUtil.get('age'));
+		// sharlly 20
+		CookieUtil.unset('name');
+		CookieUtil.unset('age');
+		console.log(CookieUtil.get('name'), CookieUtil.get('age'));
+		// null null
+	</script>
+</body>
+</html>
