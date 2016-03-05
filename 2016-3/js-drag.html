@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js拖放</title>
+	<style type="text/css">
+		*{
+			margin: 0px;
+			padding: 0px;
+		}
+		#box{
+			width: 200px;
+			height: 200px;
+			border: 5px solid #000;
+			margin-left: 25px;
+			margin-bottom: 25px;
+		}
+		ul{
+			list-style: none;
+			width: 900px;
+			height: auto;
+		}
+		li{
+			position: relative;
+			float: left;
+			margin-bottom: 25px;
+			width: 200px;
+			margin-left: 25px;
+			height: 200px;
+			background-color: #000;
+			line-height: 200px;
+			text-align: center;
+			color: #bbb;
+			cursor: pointer;
+		}
+		.clearfix{
+			*zoom: 1;
+		}
+		.clearfix:after{
+			display: block;
+			height: 0px;
+			clear: both;
+			content: "";
+			visibility: 0;
+		}
+	</style>
+</head>
+<body>	
+	<div id="box"></div>
+	<ul class="clearfix">
+		<li>1号</li>
+		<li>2号</li>
+		<li>3号</li>
+		<li>4号</li>
+		<li>5号</li>
+		<li>6号</li>
+		<li>7号</li>
+		<li>8号</li>
+	</ul>
+	<script type="text/javascript">
+		var EventUtil = {
+			adds: function(element,type,func) {
+				if(element.addEventListener){
+					element.addEventListener(type,func,false);
+				}else if(element.attachEvent){
+					element.attachEvent('on'+type,func);
+				}else{
+					element['on'+type] = func;
+				}
+			},
+			remove: function(element,type,func) {
+				if(element.removeEventListener){
+					element.removeEventListener(type,func,false);
+				}else if(element.detachEvent){
+					element.detachEvent('on'+type,func);
+				}else{
+					element['on'+type] = null;
+				}
+			},
+			getEvent: function(event) {
+				return event ? event : window.event;
+			},
+			getTarget: function(event) {
+				return event.target || event.srcElement;
+			},
+			preventDefault: function(event) {
+				if(event.preventDefault){
+					event.preventDefault();
+				}else{
+					event.returnValue = false;
+				}
+			},
+			stopPropagation: function(event) {
+				if(event.stopPropagation){
+					event.stopPropagation();
+				}else{
+					event.cancelBubble = true;
+				}
+			}
+		};
+		var Drag = function() {
+			var DragParent = document.getElementsByTagName('ul')[0],
+				changeX = 0,
+				changeY = 0,
+				thisTarget = null,
+				DP_li = DragParent.getElementsByTagName('li'),
+				DP_len = DP_li.length;
+			function handleEvent(event) {
+				event = EventUtil.getEvent(event);
+				// 事件的触发在ul上，而我要取到li
+				var target = EventUtil.getTarget(event);
+				var i = 0;
+				for(var t=0; t<DP_len; t++) {
+					if(DP_li[t] === target){
+						i = t + 1;
+						break;
+					}
+				}
+				var j = 0;
+				if(i > 4) {
+					j = 1;
+					i = i - 4;
+				}
+				switch(event.type) {
+					case 'mousedown':
+						if(target.nodeName.toLowerCase() == 'li') {
+							target.style.zIndex = 100;
+							thisTarget = target;
+							//取得当前鼠标与拖动块的相对位置
+							changeX = event.clientX - target.offsetLeft;
+							changeY = event.clientY - target.offsetTop;
+						}
+						break;
+					case 'mousemove':
+						if(thisTarget) {
+							thisTarget.style.left = (event.clientX - changeX - 25 - 225*(i-1)) + 'px';
+							thisTarget.style.top = (event.clientY - changeY - 245 - j*225) + 'px';
+						}
+						break;
+					case 'mouseup': 
+						target.style.zIndex = 1;	
+						thisTarget = null;
+						//鼠标在区域内
+						//也可以采用Li的top,left来判定
+						if((event.clientX > 30 && event.clientX < 230) && (event.clientY >5 && event.clientY < 205)) {
+							var box = document.getElementById('box');
+							var addP = document.createElement('p');
+							var pText = document.createTextNode(target.innerHTML);
+							addP.appendChild(pText);
+							box.appendChild(addP);
+							DragParent.removeChild(target);
+						}else{
+							target.style.left = '0px';
+							target.style.top = '0px';
+						}
+						break;
+				}
+			};
+			return {
+				registerEvent : function() {
+					EventUtil.adds(DragParent, 'mousedown', handleEvent);
+					EventUtil.adds(DragParent, 'mousemove', handleEvent);
+					EventUtil.adds(DragParent, 'mouseup', handleEvent);
+				}
+			}
+		};
+		Drag().registerEvent();
+
+		//这个例子可以考虑做一个从区域中删除列表的功能~
+	</script>
+</body>
+</html>
