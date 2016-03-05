@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js中Map与parseInt的使用</title>
+</head>
+<body>
+	<script type="text/javascript">
+		console.log([1,2,3].map(parseInt));
+		// you will get this answer
+		// [1,NaN,NaN]
+
+		//因为map的第二个参数index会作为parseInt函数的第二个参数，所以要强制设定为10
+		function realParseInt(ele) {
+			return parseInt(ele,10);
+		}
+		console.log([1,2,3].map(realParseInt));
+		// you will get this answer
+		// [1,2,3]
+	</script>
+</body>
+</html>
