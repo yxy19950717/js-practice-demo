@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js正则练习2</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function execTest() {
+			var text = '<html><body bgcolor=linen><p>' + 'This is <b>bold<\/b>!<\/p><\/body><\/html>';
+			var tags = /[^<>]+|<(\/?)([A-Za-z]+)([^<>]*)>/g;
+			var a,i;
+
+			while((a = tags.exec(text))) {
+				for(i=0; i<a.length; i++) {
+					console.log('[' + i + ']' + a[i]);
+				}
+				console.log('');
+			}
+		}
+		
+		function matchTest() {
+			var text = '<html><body bgcolor=linen><p>' + 'This is <b>bold<\/b>!<\/p><\/body><\/html>';
+			var tags = /[^<>]+|<(\/?)([A-Za-z]+)([^<>]*)>/g;
+			var a,i;
+			a = text.match(tags);
+			for(i=0; i<a.length; i++) {
+				console.log('[' + i + ']' + a[i]);
+			} 
+		}
+
+		// execTest();
+		matchTest();
+
+		//字符串的match方法不会捕获到分组里的内容，而正则的exec可以。
+	</script>
+</body>
+</html>
