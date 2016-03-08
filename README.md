@@ -3,9 +3,11 @@ sharlly的js进化史
 
 ## 2016-3 
 2016年3月js练习
-* js-type-detection.html   有关js数据类型的检查。
-* js-regexp-1.html 正则表达式的练习(reg的两个方法和string的三个正则方法)
-* js-closure-1.html 闭包练习
-* js-bom-1.html 有关BOM的一些对象
-* js-jsonp-cross.html 一个Jsonp跨域请求，需要自己编写后台
-* js-drag.html 纯手工打造的比较cool的一个拖拽功能
+* js-type-detection.html   [有关js数据类型的检查。](https://github.com/yxy19950717/js-practice-demo/blob/master/2016-3/js-type-detection.html)
+* js-regexp-1.html   [正则表达式的练习(reg的两个方法和string的三个正则方法)](https://github.com/yxy19950717/js-practice-demo/blob/master/2016-3/js-regexp-1.html)
+* js-closure-1.html   [闭包练习](https://github.com/yxy19950717/js-practice-demo/blob/master/2016-3/js-closure-1.html)
+* js-bom-1.html   [有关BOM的一些对象](https://github.com/yxy19950717/js-practice-demo/blob/master/2016-3/js-bom-1.html)
+* js-jsonp-cross.html   [一个Jsonp跨域请求，需要自己编写后台](https://github.com/yxy19950717/js-practice-demo/blob/master/2016-3/js-jsonp-cross.html)
+* js-drag.html   [纯手工打造的比较cool的一个拖拽功能](https://github.com/yxy19950717/js-practice-demo/blob/master/2016-3/js-drag.html)
+* js-cookie.html   [cookie的增删查](https://github.com/yxy19950717/js-practice-demo/blob/master/2016-3/js-cookie.html)
+* js-parseInt-map-question.html [有关parseInt函数和map函数的用法冲突](https://github.com/yxy19950717/js-practice-demo/blob/master/2016-3/js-parseInt-map-question.html)
