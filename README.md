@@ -12,3 +12,4 @@ sharlly的js进化史
 * js-cookie.html   [cookie的增删查](https://github.com/yxy19950717/js-practice-demo/blob/master/2016-3/js-cookie.html)
 * js-parseInt-map-question.html [有关parseInt函数和map函数的用法冲突](https://github.com/yxy19950717/js-practice-demo/blob/master/2016-3/js-parseInt-map-question.html)
 * js-regexp-2.html   [正则表达式的练习2(正则中的exec方法与字符串的match方法比较)](https://github.com/yxy19950717/js-practice-demo/blob/master/2016-3/js-regexp-2.html)
+* js-scrollWidth-offsetLeft.html [滑块左右滑动demo(有关scrollWidth和offsetLeft)](https://github.com/yxy19950717/js-practice-demo/blob/master/2016-3/js-scrollWidth-offsetLeft.html)
