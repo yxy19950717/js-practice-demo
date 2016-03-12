@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js obj</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+		 * es3模拟es5中原型继承对象方法
+		 */
+		if(!Object.create) {
+			Object.create = function(o) {
+				var F = function() {};
+				F.prototype = o;
+				return new F();
+			};
+		}
+		var a = Object.create({x:1, y:2});
+		console.log(a);
+
+		/*
+		 * 把p中的可枚举属性复制到o中
+		 * 如果o和p中含有同名属性，则覆盖o中的属性
+		 * 这个函数并不处理getter和setter以及复制属性
+		 */
+		 function extend(o, p) {
+		 	for(prop in p) {
+		 		o[prop] = p[prop];
+		 	}
+		 	return o;
+		 }
+
+		 /*
+		  * 把p中的可枚举属性复制到o中
+		  * 如果o和p中含有同名属性，o中的属性将不受影响
+		  * 这个函数并不处理getter和setter以及复制属性
+		  */
+		 function merge(o, p) {
+		 	for(prop in p) {
+		 		if(o.hasOwnProperty(prop)) {
+		 			continue;
+		 		}
+		 		o[prop] = p[prop];
+		 	}
+		 	return o;
+		 }
+
+		 /*
+		  * 如果o中的属性在p中没有同名属性，则从o中删除
+		  */
+		 function restrict(o, p) {
+		 	for(prop in o) {
+		 		if(!(prop in p)) {
+		 			delete o[prop];
+		 		}
+		 	}
+		 	return o;
+		 } 
+
+		 /*
+		  * 返回一个数组,这个数组包含的是o中可枚举的自由属性的名字
+		  * es3模拟
+		  * es5中有Object.keys()方法，也是返回可枚举的自由属性名称
+		  */
+		 function keys(o) {
+		 	if(typeof o !== 'object') {
+		 		return false;
+		 	}
+		 	var result = [];
+		 	for(o in prop) {
+		 		if(o.hasOwnProperty(prop)) {
+		 			result.push(prop);
+		 		}
+		 	}
+		 	return result;
+		 }
+	</script>
+</body>
+</html>
