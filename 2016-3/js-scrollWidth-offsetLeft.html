@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>滑块左右滑动</title>
+	<style type="text/css">
+		*{
+			margin: 0px;
+			padding: 0px;
+		}
+		.aBlock{
+			position: relative;		
+			height: 200px;
+			background-color: #000;
+		}
+	</style>
+</head>
+<body>
+	<div class="aBlock" id="aBlock" style="left:0px;width:200px;"></div>
+	<script type="text/javascript">	
+		var startMove = setInterval(function() {
+			var aBlock = document.getElementById('aBlock');
+			var aBlock_width = aBlock.style.width;
+			var all_width = document.documentElement.scrollWidth;
+			var real_width = parseInt(all_width) - parseInt(aBlock_width); 	
+			if(real_width <= aBlock.offsetLeft ) {			
+				var startTurn = setInterval(function() {
+					aBlock.style.left = (parseInt(aBlock.style.left) - 2 ) + 'px';
+					if(aBlock.offsetLeft <= 0) {
+						clearInterval(startTurn);
+					}
+				},10);
+			}else{
+				aBlock.style.left = (parseInt(aBlock.style.left) + 2 ) + 'px';
+			}
+		},10);	
+	</script>
+</body>
+</html>
