@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>xhr2异步文件上传</title>
+	<script src="../finalJs/jquery-1.11.3.js"></script>
+</head>
+<body>
+	<div>
+        <p id="upfile">附件： <input type="file" id="myfile" style="display: inline"></p>
+        <p id="upbtn">
+            <input style="padding-left:50px;padding-right: 50px;" type="button" value="异步上传" onclick="upload();">
+            <span id="uptxt" style="display: none">正在上传...</span>
+            <span id="upprog"></span>
+            <button id="stopbtn" style="display:none;">停止上传</button>
+        </p>
+    </div>
+    <script type="text/javascript">
+    	function upload() {
+    		var fd = new FormData();
+    		fd.append('myfile', $('#myfile')[0].files[0]);
+
+    		var xhr = new XMLHttpRequest();
+
+    		xhr.upload.onprogress = function(event) {
+    			console.log(event.lengthComputable);
+    			if(event.lengthComputable) {
+    				var percent = Math.round(event.loaded*100 / event.total);
+    				console.log('%d%', percent);
+                	$('#upprog').text(percent+"%");
+    			}
+    		}
+
+    		xhr.onloadstart = function(event) {
+    			console.log('load start');
+	            $("#upprog").text('开始上传');
+
+	            $("#stopbtn").on('click', function() {
+	               xhr.abort();
+	                $(this).hide();
+	            });
+
+	            loading(true);
+    		}
+
+    		// ajax过程成功完成事件
+	        xhr.onload = function(event) {
+	            console.log('load success');
+	            $("#upprog").text('上传成功');
+
+	            console.log(xhr.responseText);
+	            var ret = JSON.parse(xhr.responseText);
+	            addToFlist(ret.fname);
+	        };
+
+	        // ajax过程发生错误事件
+	        xhr.onerror = function(event) {
+	            console.log('error');
+	            $("#upprog").text('发生错误');
+	        };
+
+	        // ajax被取消
+	        xhr.onabort = function(event) {
+	            console.log('abort');
+	            $("#upprog").text('操作被取消');
+	        };
+	        // loadend传输结束，不管成功失败都会被触发
+	        xhr.onloadend = function (event) {
+	            console.log('load end');
+	            loading(false);
+	        };
+	        // 发起ajax请求传送数据
+	        xhr.open('POST', '/uploadXHR2', true);
+	        xhr.send(fd);		
+    	}
+
+
+    	function loading(showloading) {
+	        if (showloading) {
+	            $("#uptxt").show();
+	            $("#stopbtn").show();
+	        } else {
+	            $("#uptxt").hide();
+	            $("#stopbtn").hide();
+	        }
+   		}
+   		function addToFlist(fname) {
+	        var temp = ["<p id='" + fname + "'>",
+	                    fname,
+	            "<button onclick='delFile(\"" + fname + "\");'>删除</button>",
+	                    "</p>"
+	                    ];
+	        $("#flist").append(temp.join(""));
+	    }
+	    function delFile(fname) {
+	        console.log('to delete file: ' + fname);
+	    }
+    </script>
+</body>
+</html>
