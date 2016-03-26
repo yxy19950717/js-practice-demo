@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>红包查找(tx笔试题)(快排)</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+		* 自己写的快排，成就感满满~ 
+		*/
+
+		var redPack = [1, 0.6, 0.5, 1, 1, 0.5, 0.8, 0.9, 0.5, 0.5, 0.3, 2, 0.5, 0.5, 0.5, 0.6, 0.5, 0.5, 0.5];
+		var redPack_len = redPack.length;
+
+		//快排
+		function quickSort(arr, index, lastIndex) {
+			var temp = arr[index],
+				j = lastIndex,
+				i = index,
+				signalwho = true;
+			//递归出口
+			if(lastIndex - index <=1) {
+				return;
+			}
+			while(i != j) {
+				if(signalwho) {
+					if(arr[j] >= temp) {
+						j --;
+					}else{
+						arr[i] = arr[j];
+						signalwho = false;
+					}
+				}else {
+					if(arr[i] <= temp) {
+						i ++;
+					}else{
+						arr[j] = arr[i];
+						signalwho = true;
+					}
+				}
+			}
+			arr[i] = temp;
+			//左排序
+			quickSort(arr, index, i);
+			//右排序
+			quickSort(arr, i+1, lastIndex);
+			return arr;
+		}
+
+		function findCount(allCount, countArr) {
+			// 快速排序
+			var newArr = quickSort(countArr, 0, allCount-1),
+				newObj = {},
+				newArr_len = newArr.length;
+			// 取出红包金额与其出现的次数到一个对象中
+			for(var i=0; i<newArr_len; i++) {
+				if(newArr[i] in newObj) {
+					newObj[newArr[i]] ++;
+				}else{
+					newObj[newArr[i]] = 1;
+				}
+			}
+			//遍历对象取到这个红包金额
+			for(prop in newObj) {
+				if(newObj[prop]*2 > allCount) {
+					//这个就是要寻找的红包的Money
+					return prop;
+					break;
+				}
+			}
+		}
+
+		findCount(redPack_len, redPack);
+
+	</script>
+</body>
+</html>

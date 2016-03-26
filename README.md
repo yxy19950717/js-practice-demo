@@ -15,4 +15,5 @@ sharlly的js进化史
 * js-scrollWidth-offsetLeft.html [滑块左右滑动demo(有关scrollWidth和offsetLeft)](https://github.com/yxy19950717/js-practice-demo/blob/master/2016-3/js-scrollWidth-offsetLeft.html)
 * js-object-1.html [es5对象属性处理](https://github.com/yxy19950717/js-practice-demo/blob/master/2016-3/js-object-1.html)
 * js-xhr2-file-upload.html [xhr2异步上传文件(有进度显示)](https://github.com/yxy19950717/js-practice-demo/blob/master/2016-3/js-xhr2-file-upload.html)
-* js-curry [js的函数柯里化](https://github.com/yxy19950717/js-practice-demo/blob/master/2016-3/js-curry.html)
+* js-curry.html [js的函数柯里化](https://github.com/yxy19950717/js-practice-demo/blob/master/2016-3/js-curry.html)
+* js-quick-sort.html [js的快排和对象计数(由TX一道笔试题引发的感想)](https://github.com/yxy19950717/js-practice-demo/blob/master/2016-3/js-quick-sort.html)
