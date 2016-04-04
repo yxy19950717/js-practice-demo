@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>分页--必须部署于node服务器</title>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+	<% if(firstPage) { %>
+	<ul class="nowList">
+		<% firstPage.forEach(function(item,index){ %>
+			<li><%= index %>,<%= item %></li>
+		<% }); %>
+	</ul>
+	<% } %>
+	<% if(allCount) { %>
+	<ul class="allList">
+		<% for(var i=0;i<allCount;i++){ %>
+			<li id='p<%= i+1 %>'><%= i+1 %></li>
+		<% } %>	
+	</ul>
+	<% } %>
+	<script type="text/javascript">
+		// ajax请求
+		$('.allList li').on('click', function() {
+			var $this = $(this);
+			var witchP = $this.attr('id');
+			console.log(witchP);
+			$.ajax({
+				url:'divide',
+				data: {
+					'id': witchP
+				},
+				type: 'POST',
+				dataType: 'json',
+				success: function(data) {
+					var len = $('.nowList').children().length;
+					for(var i=0;i<len;i++) {
+						$('.nowList li:eq('+ i +')').text(data[i]);
+					}
+					location.hash = witchP;
+				}
+			})
+		});
+	</script>
+</body>
+</html>
+
+
+<!--
+	node后台如下
+
+	router.get('/divide', function(req, res, next) {
+		var all = [];
+		for(var i=0;i<30;i++) {
+			all.push(i);
+		}
+		var allCount = all.length/5;
+		var firstPage = [0,1,2,3,4];
+		res.render('divide', {
+			allCount: allCount,
+			firstPage: firstPage
+		});
+	});
+
+	router.post('/divide', function(req,res,next) {
+		var nowPage = parseInt(req.body.id.slice(1));
+		var all = [];
+		for(var i=0;i<30;i++) {
+			all.push(i);
+		}
+		var nowMess = all.slice((nowPage-1)*5,(nowPage-1)*5+5);
+		res.send(nowMess);
+	});
+-->

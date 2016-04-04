@@ -17,3 +17,7 @@ sharlly的js进化史
 * js-xhr2-file-upload.html [xhr2异步上传文件(有进度显示)](https://github.com/yxy19950717/js-practice-demo/blob/master/2016-3/js-xhr2-file-upload.html)
 * js-curry.html [js的函数柯里化](https://github.com/yxy19950717/js-practice-demo/blob/master/2016-3/js-curry.html)
 * js-quick-sort.html [js的快排和对象计数(由TX一道笔试题引发的感想)](https://github.com/yxy19950717/js-practice-demo/blob/master/2016-3/js-quick-sort.html)
+
+### 2016-4
+2016年4月js练习
+* js-dividePage.html [基于node的ajax分页功能](https://github.com/yxy19950717/js-practice-demo/blob/master/2016-4/js-dividePage.html)
