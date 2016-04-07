@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>sharlly's chatroom</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <ul class="pages">
+    <li class="chat page">
+      <div class="chatArea">
+        <ul class="messages"></ul>
+      </div>
+      <input class="inputMessage" placeholder="Type here..."/>
+    </li>
+    <li class="login page">
+      <div class="form">
+        <h3 class="title">尊姓大名?</h3>
+        <input class="usernameInput" type="text" maxlength="14" />
+        <ul class="headPic">
+          <li class="pic1"><span></span></li>
+          <li class="pic2"><span></span></li>
+          <li class="pic3"><span></span></li>
+          <li class="pic4"><span></span></li>
+          <li class="pic5"><span></span></li>
+          <li class="pic6"><span></span></li>
+          <li class="pic7"><span></span></li>
+          <li class="pic8"><span></span></li>
+          <li class="pic9"><span></span></li>
+        </ul>
+        <ul class="chosePic">
+          <li class="chose1"></li>
+          <li class="chose2"></li>
+          <li class="chose3"></li>
+          <li class="chose4"></li>
+          <li class="chose5"></li>
+          <li class="chose6"></li>
+          <li class="chose7"></li>
+          <li class="chose8"></li>
+          <li class="chose9"></li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+
+  <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/main.js"></script>
+</body>
+</html>

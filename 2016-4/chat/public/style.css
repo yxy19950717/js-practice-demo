@@ -1,0 +1,285 @@
+/* Fix user-agent */
+*{
+  margin: 0px;
+  padding: 0px;
+}
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+html, input {
+  font-family:
+    "HelveticaNeue-Light",
+    "Helvetica Neue Light",
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    "Lucida Grande",
+    sans-serif;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+  word-wrap: break-word;
+}
+
+/* Pages */
+
+.clearfix{
+  *zoom: 1;
+}
+.clearfix:after{
+  clear: both;
+  content: "";
+  display: block;
+  height: 0;
+  width: 0;
+  visibility: 0;
+}
+
+.pages {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.page {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+/* Login Page */
+
+.login.page {
+  background-color: #000;
+}
+
+.login.page .form {
+  height: 100px;
+  margin-top: -100px;
+  position: absolute;
+
+  text-align: center;
+  top: 40%;
+  width: 100%;
+}
+
+.login.page .form .usernameInput {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #fff;
+  outline: none;
+  padding-bottom: 15px;
+  text-align: center;
+  width: 400px;
+}
+
+.login.page .title {
+  font-size: 200%;
+}
+
+.login.page .usernameInput {
+  font-size: 200%;
+  letter-spacing: 3px;
+}
+
+.login.page .title, .login.page .usernameInput {
+  color: #fff;
+  font-weight: 100;
+}
+
+/* Chat page */
+
+.chat.page {
+  display: none;
+}
+
+/* Font */
+
+.messages {
+  font-size: 100%;
+}
+
+.inputMessage {
+  font-size: 90%;
+}
+
+.log {
+  color: gray;
+  font-size: 70%;
+  margin: 5px;
+  text-align: center;
+}
+
+/* Messages */
+
+.chatArea {
+  height: 100%;
+  padding-bottom: 60px;
+}
+
+.messages {
+  height: 100%;
+  margin: 0;
+  overflow-y: scroll;
+  padding: 10px 20px 10px 20px;
+}
+
+.message{
+  height: auto;
+  line-height: 25px;
+  margin-bottom: 10px;
+}
+
+.message span.myHeadPic,.message span.myHeadPicRight {
+  float: left;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 5px;
+}
+
+.message span.myHeadPicRight {
+  float: right;
+}
+
+.message img{
+  float: left;
+  width: 40px;
+  height: 40px;
+}
+
+.message.typing .messageBody {
+  color: gray;
+}
+
+.message .messageBody{
+  display: block;
+  width: auto;
+  max-width: 50%;
+  margin-top: 5px;
+  font-style: 100%;
+}
+
+.username, .yourUsername {
+  display: block;
+  overflow: hidden;
+  padding-right: 15px;
+  text-align: left;
+  line-height: 15px;
+  height: 17px;
+}
+
+.yourUsername{
+  text-align: right;
+}
+
+/* Input */
+
+.inputMessage {
+  border: 10px solid #000;
+  bottom: 0;
+  height: 60px;
+  left: 0;
+  outline: none;
+  padding-left: 10px;
+  position: absolute;
+  right: 0;
+  width: 100%;
+}
+
+/* headPic */
+.headPic, .chosePic{
+  width: 720px;
+  height: 60px;
+  padding-left: 0px;
+  margin:0 auto;
+  margin-top: 30px;
+}
+
+.chosePic{
+  margin-top: 10px;
+}
+
+.headPic li{
+  float: left;
+  width: 60px;
+  height: 60px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background: #fff;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.headPic li span{
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+}
+
+.headPic li.pic1 span{
+  background: url('1.png') no-repeat 0px 0px;
+}
+
+.headPic li.pic2 span{
+  background: url('2.png') no-repeat 0px 0px;
+}
+
+.headPic li.pic3 span{
+  background: url('3.png') no-repeat 0px 0px;
+}
+
+.headPic li.pic4 span{
+  background: url('4.png') no-repeat 0px 0px;
+}
+
+.headPic li.pic5 span{
+  background: url('5.png') no-repeat 0px 0px;
+}
+
+.headPic li.pic6 span{
+  background: url('6.png') no-repeat 0px 0px;
+}
+
+.headPic li.pic7 span{
+  background: url('7.png') no-repeat 0px 0px;
+}
+
+.headPic li.pic8 span{
+  background: url('8.png') no-repeat 0px 0px;
+}
+
+.headPic li.pic9 span{
+  background: url('9.png') no-repeat 0px 0px;
+}
+
+.chosePic li{
+  float: left;
+  width: 60px;
+  height: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.chosePic li span{
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+  background: url('gou.png') no-repeat 0px 0px;
+}

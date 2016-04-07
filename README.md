@@ -21,3 +21,4 @@ sharlly的js进化史
 ### 2016-4
 2016年4月js练习
 * js-dividePage.html [基于node的ajax分页功能](https://github.com/yxy19950717/js-practice-demo/blob/master/2016-4/js-dividePage.html)
+* chat [基于socket.io的聊天室](https://github.com/yxy19950717/js-practice-demo/blob/master/2016-4/chat)
