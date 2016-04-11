@@ -22,3 +22,4 @@ sharlly的js进化史
 2016年4月js练习
 * js-dividePage.html [基于node的ajax分页功能](https://github.com/yxy19950717/js-practice-demo/blob/master/2016-4/js-dividePage.html)
 * chat [基于socket.io的聊天室](https://github.com/yxy19950717/js-practice-demo/blob/master/2016-4/chat)
+* js-regexp-3.html [正则表达式的练习3(正则的一些写法)](https://github.com/yxy19950717/js-practice-demo/blob/master/2016-4/js-regexp-3.html)
