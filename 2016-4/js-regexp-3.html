@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js正则练习3</title>
+</head>
+<body>
+	<script type="text/javascript" id="test4">
+		/*
+		 * test: 贪婪型匹配和懒惰型匹配  testReg1: 贪婪  testReg2: 懒惰
+		 * test2: 单词边界匹配  test2Reg1: \b匹配单词开头结尾  test2Reg2: 直接匹配
+		 * test3: 字符串边界匹配  test3Reg1: ^,$匹配开头结尾  
+		 * test4: 分行匹配  test4Reg1: 匹配所有//注释  test4Reg2: 匹配所有/*注释
+		*/
+
+		// test
+		var test = '<p><span>第一段字符</span>和<span>第二段字符</span></p>';
+		var testReg1 = /<span>.*<\/span>/g;
+		var testReg2 = /<span>.*?<\/span>/g;
+
+		var testResult1 = testReg1.exec(test);
+		console.log('贪婪型匹配结果为:', testResult1);
+
+		var testResult2;
+		while((testResult2 = testReg2.exec(test)) !== null) {
+			console.log('懒惰型匹配结果为:', testResult2);
+		}
+		
+		// test2
+		var test2 = '<p>this data is very important for us, please remember it!</p>'
+		var test2Reg1 = /\bis\b/g;
+		var test2Reg2 = /is/g;
+
+		var test2Result1 = test2.match(test2Reg1);
+		console.log('单词边界匹配结果为:', test2Result1);
+
+		var test2Result2 = test2.match(test2Reg2);
+		console.log('直接匹配结果为:', test2Result2);
+		
+		// test3
+		var test3 = '<?xml version="1.0" encoding="utf-8" ?>'
+			+'<?xml version="1.0" encoding="utf-8" ?>';
+		var test3Reg1 = /^\s*<\?xml.*?\?>/g;
+
+		var test3Result1 = test3Reg1.exec(test3);
+		console.log('字符串边界匹配结果为:', test3Result1);
+	</script>
+
+	<script type="text/javascript">
+		// test4
+		var test4 = document.getElementById('test4').innerHTML;
+		// 很可惜，js中没有(?m)标识的分行匹配，我们采用全局g进行exec的循环匹配
+		var test4Reg1 = /\/\/.*/g;
+		var test4Reg2 = /\/\*[\s\S]*\*\//g;
+
+		var test4Result1 = test4.match(test4Reg1);
+		var test4Result2 = test4.match(test4Reg2);
+		console.log('多行匹配//注释结果为:', test4Result1);
+		console.log('多行匹配/**/注释结果为:', test4Result2);
+	</script>
+</body>
+</html>
