@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>kissy的打包与引用</title>
+	<script type="text/javascript" src="http://g.alicdn.com/kissy/k/1.4.7/seed.js"></script>
+</head>
+<body>
+	<button>just a test</button>
+	<script type="text/javascript">
+		KISSY.config({
+			packages: {
+				'package_1': {
+					base: './sources'
+				},
+				'package_2': {
+					base: './sources'
+				},
+				'package_3': {
+					base: './sources'
+				}
+			}
+		});
+
+		KISSY.use('package_1,package_2,package_3', function(S, mod_1, mod_2, mod_3) {
+			// mod1加载即可,不需调用
+			mod_2();
+			mod_3();
+		});
+	</script>
+</body>
+</html>

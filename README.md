@@ -23,3 +23,7 @@ sharlly的js进化史
 * js-dividePage.html [基于node的ajax分页功能](https://github.com/yxy19950717/js-practice-demo/blob/master/2016-4/js-dividePage.html)
 * chat [基于socket.io的聊天室](https://github.com/yxy19950717/js-practice-demo/blob/master/2016-4/chat)
 * js-regexp-3.html [正则表达式的练习3(正则的一些写法)](https://github.com/yxy19950717/js-practice-demo/blob/master/2016-4/js-regexp-3.html)
+
+### 2016-5
+2016年5月js练习
+* kissy_add_package.html [kissy的打包与引用](https://github.com/yxy19950717/js-practice-demo/blob/master/2016-5/kissy_add_package.html)
