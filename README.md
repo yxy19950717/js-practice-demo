@@ -27,3 +27,7 @@ sharlly的js进化史
 ### 2016-5
 2016年5月js练习
 * kissy_add_package.html [kissy的打包与引用](https://github.com/yxy19950717/js-practice-demo/blob/master/2016-5/kissy_add_package.html)
+
+### 2016-6
+2016年6月js练习
+* ./eslint_learn [eslint配置及使用](https://github.com/yxy19950717/js-practice-demo/blob/master/2016-6/eslint_learn)
