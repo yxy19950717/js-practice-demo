@@ -31,3 +31,8 @@ sharlly的js进化史
 ### 2016-6
 2016年6月js练习
 * ./eslint_learn [eslint配置及使用](https://github.com/yxy19950717/js-practice-demo/blob/master/2016-6/eslint_learn)
+
+### 2016-10
+2016年10月js练习
+* js-url-query.html [取url参数](https://github.com/yxy19950717/js-practice-demo/blob/master/2016-10/js-url-query.html)
+* redux-createStore-recode.html [redux中createStore重写](https://github.com/yxy19950717/js-practice-demo/blob/master/2016-10/redux-createStore-recode.html)

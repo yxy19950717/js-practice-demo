@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>redux中createStore重写</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+		 * createStore
+		 * @func dispatch 根据action改变状态并触发钩子函数
+		 * @func subscribe 挂载钩子函数
+		 * @func getState 返回当前状态
+		*/
+		function createStore(reducer, initState) {
+			if (typeof reducer !== 'function') {
+				throw new Error('reducer must be a function');
+			}
+			var currentReducer = reducer;
+			var currentState = initState;
+			var currentListeners = [];
+			
+			function subscribe(listener) {
+				currentListeners.push(listener);
+			}
+
+			function dispatch(action) {
+				// 由action改变状态
+				currentState = currentReducer(currentState, action);
+				// 钩子函数触发
+				var currentListeners_len = currentListeners.length;
+				for (var i = 0; i < currentListeners_len; i++) {
+					currentListeners[i]();
+				}
+				return action;
+			}
+
+			function getState() {
+				return currentState;
+			}
+
+			return {
+				subscribe: subscribe,
+				getState: getState,
+				dispatch: dispatch
+			}
+		}
+
+		/*
+		 * 测试
+		*/
+
+		var r = function(state, action) {
+			if (!state) {
+				state = 0;
+			} 
+			switch (action.type) {
+				case '+': 
+					return state + 1;
+				case '-':
+					return state - 1;
+				default: 
+					return state;
+			}
+		};
+
+		var jia = function() {
+			return {
+				type: '+'
+			}
+		};
+
+		var jian = function() {
+			return {
+				type: '-'
+			}
+		}
+
+		var store = createStore(r, 2);
+
+		store.subscribe(function() {
+			console.log(store.getState());
+		});
+
+		store.dispatch(jia());
+		store.dispatch(jian());
+	</script>
+</body>
+</html>

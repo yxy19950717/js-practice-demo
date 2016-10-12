@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js-url-query</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var str = 'https://www.baidu.com/s?wd=5Cb&rsv_spt=1&rsv_iqid=0x8cb6e9330001527d&issp=1&f=8&rsv_bp=1&rsv_idx=2&ie=utf-8&rqlang=cn&tn=baiduhome_pg&rsv_enter=1&oq=%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%20%5Cw&rsv_t=4891k9ykwcT2VvBlC45Gclwb2dIdlmVGNYreiXnbEHUzLzXkapoA2%2FQhRG40j6fzWCYV&inputT=261&rsv_pq=83e7ad0b00021636&rsv_sug3=161&rsv_sug2=0&rsv_sug4=261';
+		var regExp = /([^=&\?\s]+)[=\s]*([^=&\s]*)/g;
+		while(regExp.exec(str)) {
+			console.log(RegExp.$1, RegExp.$2);
+		}
+	</script>
+</body>
+</html>
